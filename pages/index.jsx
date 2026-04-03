@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 const IDIOMAS = ["Español", "Ingles", "Portugues"];
 const NIVELES = ["Avanzado", "Basico"];
@@ -65,8 +66,15 @@ export default function Home() {
       </Head>
       <div style={styles.container}>
         <div style={styles.card}>
-          <h1 style={styles.title}>HuAcademy</h1>
-          <p style={styles.subtitle}>Alta de Partners</p>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div>
+              <h1 style={styles.title}>HuAcademy</h1>
+              <p style={styles.subtitle}>Alta de Partners</p>
+            </div>
+            <Link href="/bulk" style={{ fontSize: "13px", color: "#2563eb", textDecoration: "none" }}>
+              Carga masiva →
+            </Link>
+          </div>
 
           <form onSubmit={handleSubmit} style={styles.form}>
             <div style={styles.row}>
