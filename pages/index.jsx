@@ -12,7 +12,7 @@ export default function Home() {
     email: "",
     password: DEFAULT_PASSWORD,
     idioma: IDIOMAS[0],
-    nivel: NIVELES[1],
+    nivel: NIVELES[0],
   });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -42,7 +42,7 @@ export default function Home() {
           email: "",
           password: DEFAULT_PASSWORD,
           idioma: IDIOMAS[0],
-          nivel: NIVELES[1],
+          nivel: NIVELES[0],
         });
       } else {
         setResult({ type: "error", data });
