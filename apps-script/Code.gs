@@ -14,8 +14,9 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
 
-    // Grabar en la sheet
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    // Grabar en la sheet — hardcodeado para que funcione siempre
+    var SHEET_ID = "1TnJw62UuY9Mevoso8DDUoNJsj_P28J2FIMzIzuby8Y4";
+    var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
     // Si la sheet está vacía, agregar headers
     if (sheet.getLastRow() === 0) {
