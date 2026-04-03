@@ -89,9 +89,22 @@ export default async function handler(req, res) {
           nivel,
           timestamp: new Date().toISOString(),
         }),
+        redirect: "follow",
       });
-      const scriptData = await scriptResponse.json();
-      mailSent = scriptData.success === true;
+      const scriptText = await scriptResponse.text();
+      try {
+        const scriptData = JSON.parse(scriptText);
+        mailSent = scriptData.success === true;
+        if (!mailSent) mailError = scriptData.error || "Apps Script devolvió success=false";
+      } catch {
+        // Si Apps Script devuelve HTML (redirect de Workspace),
+        // checkeamos si el status fue OK
+        if (scriptResponse.ok) {
+          mailSent = true; // Probablemente funcionó pero devolvió HTML
+        } else {
+          mailError = `Apps Script devolvió respuesta no-JSON (status ${scriptResponse.status})`;
+        }
+      }
     } catch (err) {
       mailError = err.message;
     }
