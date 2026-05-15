@@ -15,6 +15,7 @@ export default function Home() {
   });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -221,6 +222,36 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Easter egg: help toggle */}
+      <button
+        onClick={() => setHelpOpen(!helpOpen)}
+        style={styles.helpToggle}
+        title="Ayuda"
+      >
+        <img
+          src="/helpers.png"
+          alt="Ayuda"
+          style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }}
+        />
+      </button>
+
+      {helpOpen && (
+        <div style={styles.helpPanel}>
+          <div style={styles.helpHeader}>
+            <span style={{ fontSize: "15px", fontWeight: "700" }}>Guia rapida</span>
+            <button onClick={() => setHelpOpen(false)} style={styles.helpClose}>x</button>
+          </div>
+          <div style={styles.helpBody}>
+            <p style={styles.helpStep}><strong>1.</strong> Completa nombre, apellido y email del partner.</p>
+            <p style={styles.helpStep}><strong>2.</strong> La contrasena por defecto es <code>12345678</code> (se puede cambiar).</p>
+            <p style={styles.helpStep}><strong>3.</strong> Selecciona el idioma del partner.</p>
+            <p style={styles.helpStep}><strong>4.</strong> Click en &quot;Crear Partner&quot; — se crea el usuario en HuAcademy y se le envia un mail con sus datos de acceso.</p>
+            <p style={styles.helpStep}><strong>Tip:</strong> Para cargar varios partners a la vez, usa el link &quot;Carga masiva&quot; arriba a la derecha.</p>
+            <p style={styles.helpCheer}>Vamos Partnerships! Ra ra ra!</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
@@ -323,5 +354,66 @@ const styles = {
     maxHeight: "200px",
     whiteSpace: "pre-wrap",
     wordBreak: "break-word",
+  },
+  helpToggle: {
+    position: "fixed",
+    bottom: "24px",
+    right: "24px",
+    width: "56px",
+    height: "56px",
+    borderRadius: "50%",
+    border: "3px solid #fff",
+    padding: "0",
+    cursor: "pointer",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+    overflow: "hidden",
+    background: "#4338ca",
+    transition: "transform 0.2s",
+  },
+  helpPanel: {
+    position: "fixed",
+    bottom: "92px",
+    right: "24px",
+    width: "300px",
+    backgroundColor: "#fff",
+    borderRadius: "12px",
+    boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+    overflow: "hidden",
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    zIndex: 1000,
+  },
+  helpHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "14px 16px",
+    backgroundColor: "#4338ca",
+    color: "#fff",
+  },
+  helpClose: {
+    background: "none",
+    border: "none",
+    color: "#fff",
+    fontSize: "16px",
+    cursor: "pointer",
+    padding: "0 4px",
+    lineHeight: "1",
+  },
+  helpBody: {
+    padding: "16px",
+  },
+  helpStep: {
+    margin: "0 0 10px",
+    fontSize: "13px",
+    color: "#334155",
+    lineHeight: "1.5",
+  },
+  helpCheer: {
+    margin: "14px 0 0",
+    fontSize: "13px",
+    fontWeight: "700",
+    color: "#4338ca",
+    textAlign: "center",
+    fontStyle: "italic",
   },
 };
