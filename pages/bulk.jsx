@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 const IDIOMAS = ["Español", "Ingles", "Portugues"];
-const NIVELES = ["Avanzado", "Basico"];
 const DEFAULT_PASSWORD = "12345678";
 
 function parseTextBlock(text) {
@@ -29,7 +28,6 @@ function parseTextBlock(text) {
         email: match[2].trim(),
         password: DEFAULT_PASSWORD,
         idioma: IDIOMAS[0],
-        nivel: NIVELES[0],
       });
       continue;
     }
@@ -46,7 +44,6 @@ function parseTextBlock(text) {
         email: match[1].trim(),
         password: DEFAULT_PASSWORD,
         idioma: IDIOMAS[0],
-        nivel: NIVELES[0],
       });
       continue;
     }
@@ -63,7 +60,6 @@ function parseTextBlock(text) {
         email: match[2].trim(),
         password: DEFAULT_PASSWORD,
         idioma: IDIOMAS[0],
-        nivel: NIVELES[0],
       });
       continue;
     }
@@ -101,7 +97,6 @@ export default function Bulk() {
         email: "",
         password: DEFAULT_PASSWORD,
         idioma: IDIOMAS[0],
-        nivel: NIVELES[0],
       },
     ]);
   };
@@ -254,22 +249,6 @@ export default function Bulk() {
                     </option>
                   ))}
                 </select>
-                <select
-                  onChange={(e) => {
-                    if (e.target.value) applyToAll("nivel", e.target.value);
-                  }}
-                  style={styles.miniSelect}
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Nivel
-                  </option>
-                  {NIVELES.map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </select>
               </div>
 
               <div style={styles.gridWrapper}>
@@ -282,7 +261,6 @@ export default function Bulk() {
                       <th style={styles.th}>Email</th>
                       <th style={styles.th}>Pass</th>
                       <th style={styles.th}>Idioma</th>
-                      <th style={styles.th}>Nivel</th>
                       <th style={styles.th}>Estado</th>
                       <th style={styles.th}></th>
                     </tr>
@@ -360,22 +338,6 @@ export default function Bulk() {
                             {IDIOMAS.map((i) => (
                               <option key={i} value={i}>
                                 {i}
-                              </option>
-                            ))}
-                          </select>
-                        </td>
-                        <td style={styles.td}>
-                          <select
-                            value={user.nivel}
-                            onChange={(e) =>
-                              updateUser(idx, "nivel", e.target.value)
-                            }
-                            style={styles.cellSelect}
-                            disabled={processing}
-                          >
-                            {NIVELES.map((n) => (
-                              <option key={n} value={n}>
-                                {n}
                               </option>
                             ))}
                           </select>

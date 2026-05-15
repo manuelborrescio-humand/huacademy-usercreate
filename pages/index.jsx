@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 const IDIOMAS = ["Español", "Ingles", "Portugues"];
-const NIVELES = ["Avanzado", "Basico"];
 const DEFAULT_PASSWORD = "12345678";
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
     email: "",
     password: DEFAULT_PASSWORD,
     idioma: IDIOMAS[0],
-    nivel: NIVELES[0],
   });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -43,7 +41,6 @@ export default function Home() {
           email: "",
           password: DEFAULT_PASSWORD,
           idioma: IDIOMAS[0],
-          nivel: NIVELES[0],
         });
       } else {
         setResult({ type: "error", data });
@@ -131,39 +128,21 @@ export default function Home() {
               <span style={styles.hint}>Minimo 8 caracteres</span>
             </div>
 
-            <div style={styles.row}>
-              <div style={styles.field}>
-                <label style={styles.label}>Idioma *</label>
-                <select
-                  name="idioma"
-                  value={form.idioma}
-                  onChange={handleChange}
-                  required
-                  style={styles.input}
-                >
-                  {IDIOMAS.map((i) => (
-                    <option key={i} value={i}>
-                      {i}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div style={styles.field}>
-                <label style={styles.label}>Nivel *</label>
-                <select
-                  name="nivel"
-                  value={form.nivel}
-                  onChange={handleChange}
-                  required
-                  style={styles.input}
-                >
-                  {NIVELES.map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div style={styles.field}>
+              <label style={styles.label}>Idioma *</label>
+              <select
+                name="idioma"
+                value={form.idioma}
+                onChange={handleChange}
+                required
+                style={styles.input}
+              >
+                {IDIOMAS.map((i) => (
+                  <option key={i} value={i}>
+                    {i}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div style={styles.segInfo}>

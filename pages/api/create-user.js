@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       .json({ error: "HUMAND_API_KEY no configurada en el servidor" });
   }
 
-  const { firstName, lastName, email, password, idioma, nivel } = req.body;
+  const { firstName, lastName, email, password, idioma } = req.body;
 
   // Validación server-side
   const errors = [];
@@ -20,7 +20,6 @@ export default async function handler(req, res) {
   if (!password || password.length < 8)
     errors.push("Contraseña debe tener al menos 8 caracteres");
   if (!idioma) errors.push("Idioma es requerido");
-  if (!nivel) errors.push("Nivel es requerido");
 
   if (errors.length > 0) {
     return res.status(400).json({ error: "Datos inválidos", details: errors });
@@ -36,7 +35,6 @@ export default async function handler(req, res) {
     segmentation: [
       { group: "Segmentación temporal", item: "Partners" },
       { group: "Idioma", item: idioma },
-      { group: "Nivel", item: nivel },
     ],
   };
 
@@ -86,7 +84,6 @@ export default async function handler(req, res) {
           lastName: lastName.trim(),
           password,
           idioma,
-          nivel,
           timestamp: new Date().toISOString(),
         }),
         redirect: "follow",

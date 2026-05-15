@@ -52,6 +52,6 @@ Abrir http://localhost:3000
 
 - Se usa **PUT** (upsert) en lugar de POST para crear usuarios. Esto evita que Humand envie el email de bienvenida automatico. El mail lo controlamos nosotros via Apps Script.
 - Si el usuario ya existe, PUT lo actualiza (reemplaza todos los campos).
-- La segmentacion "Segmentacion temporal = Partners" se asigna automaticamente. El formulario solo pide Idioma y Nivel.
+- La segmentacion "Segmentacion temporal = Partners" se asigna automaticamente. El formulario solo pide Idioma.
 - El `employeeInternalId` (usuario de login) es el email del partner.
 - La contrasena por defecto es `12345678`, editable desde el formulario.
