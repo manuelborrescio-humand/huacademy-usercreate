@@ -247,6 +247,7 @@ export default function Home() {
             <p style={styles.helpStep}><strong>2.</strong> La contrasena por defecto es <code>12345678</code> (se puede cambiar).</p>
             <p style={styles.helpStep}><strong>3.</strong> Selecciona el idioma del partner.</p>
             <p style={styles.helpStep}><strong>4.</strong> Click en &quot;Crear Partner&quot; — se crea el usuario en HuAcademy y se le envia un mail con sus datos de acceso.</p>
+            <p style={styles.helpStep}><strong>5.</strong> El partner recibe un correo con instrucciones de acceso desde la casilla de Manuel Borrescio.</p>
             <p style={styles.helpStep}><strong>Tip:</strong> Para cargar varios partners a la vez, usa el link &quot;Carga masiva&quot; arriba a la derecha.</p>
             <p style={styles.helpCheer}>Vamos Partnerships! Ra ra ra!</p>
           </div>
